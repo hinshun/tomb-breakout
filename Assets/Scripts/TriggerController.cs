@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class TriggerController : MonoBehaviour {
 
   public List<Triggerable> triggers;
-  public DoorController door;
+  public Moveable door;
   public Color activatedColor;
 
   private List<Triggerable> activated;
@@ -22,7 +22,7 @@ public class TriggerController : MonoBehaviour {
           return;
         }
       }
-      door.Open();
+      door.Toggle();
     }
   }
 

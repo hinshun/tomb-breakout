@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Triggerable : MonoBehaviour {
+  public List<Moveable> moveables;
 
   private bool activated; 
   private TriggerController controller;
@@ -18,8 +20,7 @@ public class Triggerable : MonoBehaviour {
   void OnTriggerEnter(Collider other) {
     if (!activated && other.CompareTag("Player")) {
       activated = true;
-
-      // light up
+      ToggleMoveables();
       controller.TriggerActivate(this);
     }
   }
@@ -31,5 +32,12 @@ public class Triggerable : MonoBehaviour {
   public void Reset() {
     activated = false;
     SetColor(originalColor);
+    ToggleMoveables();
+  }
+
+  public void ToggleMoveables() {
+    foreach (Moveable moveable in moveables) {
+      moveable.Toggle();
+    }
   }
 }
