@@ -16,9 +16,9 @@ public class Moveable : MonoBehaviour {
   public IEnumerator MoveCoroutine(Vector3 destination) {
     if (!done) {
       while (transform.position != destination) {
-        transform.position = Vector3.MoveTowards(transform.position, destination, 0.25f);
+        transform.position = Vector3.MoveTowards(transform.position, destination, 0.1f);
 
-        if (Vector3.Distance(transform.position, destination) <= 0.25f) {
+        if (Vector3.Distance(transform.position, destination) <= 0.1f) {
           transform.position = destination;
           done = true;
         }
